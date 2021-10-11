@@ -7,10 +7,14 @@ const getForecast = async (latitude, longitude) => {
     "," +
     longitude;
 
-  const forecastData = await fetch(url);
-  const forecastJSON = await forecastData.json();
+  try {
+    const forecastData = await fetch(url);
+    const forecastJSON = await forecastData.json();
 
-  return forecastJSON;
+    return forecastJSON;
+  } catch (e) {
+    console.log("Some error", e);
+  }
 };
 
 export { getForecast };
